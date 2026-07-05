@@ -211,3 +211,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 4000);
     }
 });
+
+// ---- OBFUSCATED MECHANICAL REVEALERS ----
+// Base64 encoded contacts to secure them from public DOM scraping engines
+const e_hash = "YhtubWFkLnNoYmF0MjAxMEBnbWFpbC5jb20="; // slightly salted
+const p_hash = "YorNDAzNDQ5NDg4OQ==";
+
+function revealEmail() {
+    // Decodes cleanly only on genuine user triggers
+    const container = document.getElementById('email-container');
+    if (container) {
+        const decoded = atob(e_hash.slice(2)); 
+        container.innerHTML = `<a href="mailto:${decoded}" class="text-sm font-bold text-slate-850 dark:text-slate-200 hover:text-indigo-600 transition-colors">${decoded}</a>`;
+    }
+}
+
+function revealPhone() {
+    const container = document.getElementById('phone-container');
+    if (container) {
+        const decoded = atob(p_hash.slice(2));
+        container.innerHTML = `<a href="tel:+${decoded}" class="text-sm font-bold text-slate-850 dark:text-slate-200 hover:text-indigo-600 transition-colors">+${decoded.slice(0,2)} ${decoded.slice(2,5)} ${decoded.slice(5,8)} ${decoded.slice(8)}</a>`;
+    }
+}
